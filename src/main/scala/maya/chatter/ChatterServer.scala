@@ -19,7 +19,7 @@ object Chatter extends IOApp {
   private val log = LoggerFactory.getLogger(getClass)
 
   override def run(args: List[String]): IO[ExitCode] = {
-    val port: Int = Properties.envOrElse("PORT", "8080").toInt
+    val port: Int = Properties.envOrElse("http.port", "8080").toInt
 
     log.info(s"Port is $port")
 
