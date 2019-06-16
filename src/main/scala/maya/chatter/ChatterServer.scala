@@ -10,13 +10,18 @@ import fs2.concurrent.{Queue, Topic}
 import org.http4s.dsl.Http4sDsl
 import org.http4s.implicits._
 import org.http4s.server.blaze.BlazeServerBuilder
+import org.slf4j.LoggerFactory
 
 import scala.concurrent.{ExecutionContext, ExecutionContextExecutorService}
 import scala.util.Properties
 
 object Chatter extends IOApp {
+  private val log = LoggerFactory.getLogger(getClass)
+
   override def run(args: List[String]): IO[ExitCode] = {
     val port: Int = Properties.envOrElse("port", "8080").toInt
+
+    log.info(s"Port is $port")
 
     for {
       q   <- Queue.unbounded[IO, FromClient]
@@ -51,13 +56,11 @@ class ChatterApp[F[_]](contextShift: ContextShift[F],
   val ec: ExecutionContextExecutorService =
     ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(4))
 
-  def stream(port: Int): Stream[F, ExitCode] = {
-    println(s"!!!!!!!! Port is $port")
+  def stream(port: Int): Stream[F, ExitCode] =
     BlazeServerBuilder[F]
       .bindHttp(port, "0.0.0.0")
       .withHttpApp(new ChatterRoutes[F](ec, contextShift, queue, topic, ref).routes.orNotFound)
       .serve
-  }
 }
 
 object ChatterApp {

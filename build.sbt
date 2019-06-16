@@ -26,6 +26,7 @@ lazy val root = (project in file("."))
     .enablePlugins(JavaAppPackaging)
 
 
+
 scalacOptions ++= Seq(
   "-deprecation",
   "-encoding", "UTF-8",
