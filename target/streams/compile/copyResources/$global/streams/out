@@ -1,0 +1,8 @@
+[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/mayadriv/LearnScala/chatter/src/main/resources/logback.xml,/Users/mayadriv/LearnScala/chatter/target/scala-2.12/classes/logback.xml)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/mayadriv/LearnScala/chatter/src/main/resources/static,/Users/mayadriv/LearnScala/chatter/target/scala-2.12/classes/static)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/mayadriv/LearnScala/chatter/src/main/resources/static/background.gif,/Users/mayadriv/LearnScala/chatter/target/scala-2.12/classes/static/background.gif)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/mayadriv/LearnScala/chatter/src/main/resources/static/bird.png,/Users/mayadriv/LearnScala/chatter/target/scala-2.12/classes/static/bird.png)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/mayadriv/LearnScala/chatter/src/main/resources/static/chat.js,/Users/mayadriv/LearnScala/chatter/target/scala-2.12/classes/static/chat.js)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/mayadriv/LearnScala/chatter/src/main/resources/static/index.html,/Users/mayadriv/LearnScala/chatter/target/scala-2.12/classes/static/index.html)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/mayadriv/LearnScala/chatter/src/main/resources/static/style.css,/Users/mayadriv/LearnScala/chatter/target/scala-2.12/classes/static/style.css)[0m

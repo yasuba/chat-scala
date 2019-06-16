@@ -1,0 +1,23 @@
+[0m[[0m[0minfo[0m] [0m[0mPackaging /Users/mayadriv/LearnScala/chatter/target/scala-2.12/chatter_2.12-0.0.1-SNAPSHOT-sources.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	static/bird.png[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/mayadriv/LearnScala/chatter/src/main/resources/static/bird.png[0m
+[0m[[0m[0mdebug[0m] [0m[0m	static/style.css[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/mayadriv/LearnScala/chatter/src/main/resources/static/style.css[0m
+[0m[[0m[0mdebug[0m] [0m[0m	static[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/mayadriv/LearnScala/chatter/src/main/resources/static[0m
+[0m[[0m[0mdebug[0m] [0m[0m	static/chat.js[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/mayadriv/LearnScala/chatter/src/main/resources/static/chat.js[0m
+[0m[[0m[0mdebug[0m] [0m[0m	logback.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/mayadriv/LearnScala/chatter/src/main/resources/logback.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	maya/chatter/ChatterRoutes.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/mayadriv/LearnScala/chatter/src/main/scala/maya/chatter/ChatterRoutes.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	static/background.gif[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/mayadriv/LearnScala/chatter/src/main/resources/static/background.gif[0m
+[0m[[0m[0mdebug[0m] [0m[0m	static/index.html[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/mayadriv/LearnScala/chatter/src/main/resources/static/index.html[0m
+[0m[[0m[0mdebug[0m] [0m[0m	maya/chatter/HelloWorld.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/mayadriv/LearnScala/chatter/src/main/scala/maya/chatter/HelloWorld.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	maya/chatter/ChatterServer.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/mayadriv/LearnScala/chatter/src/main/scala/maya/chatter/ChatterServer.scala[0m
+[0m[[0m[0minfo[0m] [0m[0mDone packaging.[0m
