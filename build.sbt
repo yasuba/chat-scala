@@ -20,8 +20,11 @@ lazy val root = (project in file("."))
       "ch.qos.logback"  %  "logback-classic"     % LogbackVersion
     ),
     addCompilerPlugin("org.spire-math" %% "kind-projector"     % "0.9.6"),
-    addCompilerPlugin("com.olegpy"     %% "better-monadic-for" % "0.2.4")
+    addCompilerPlugin("com.olegpy"     %% "better-monadic-for" % "0.2.4"),
+    herokuAppName in Compile := "chat-scala"
   )
+    .enablePlugins(JavaAppPackaging)
+
 
 scalacOptions ++= Seq(
   "-deprecation",

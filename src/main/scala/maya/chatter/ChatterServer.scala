@@ -12,10 +12,10 @@ import org.http4s.implicits._
 import org.http4s.server.blaze.BlazeServerBuilder
 
 import scala.concurrent.{ExecutionContext, ExecutionContextExecutorService}
+import scala.util.Properties
 
 object Chatter extends IOApp {
   override def run(args: List[String]): IO[ExitCode] = {
-
    for {
      q   <- Queue.unbounded[IO, FromClient]
      t   <- Topic[IO, ToClient](ToClient(""))
@@ -50,9 +50,11 @@ class ChatterApp[F[_]](contextShift: ContextShift[F],
   val ec: ExecutionContextExecutorService =
     ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(4))
 
+  val port: Int = Properties.envOrElse("PORT", "8080").toInt
+
   def stream: Stream[F, ExitCode] =
     BlazeServerBuilder[F]
-      .bindHttp(8080, "0.0.0.0")
+      .bindHttp(port, "0.0.0.0")
       .withHttpApp(new ChatterRoutes[F](ec, contextShift, queue, topic, ref).routes.orNotFound)
       .serve
 }
