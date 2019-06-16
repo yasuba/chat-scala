@@ -7,7 +7,7 @@
 		revision="0.0.1-SNAPSHOT"
 		conf="plugin"
 		confs="compile, runtime, test, provided, optional, universal, universal-docs, universal-src, windows, docker, linux, rpm, debian, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
-		date="20190616164014"/>
+		date="20190616164449"/>
 	<dependencies>
 		<module organisation="com.olegpy" name="better-monadic-for_2.12">
 			<revision name="0.2.4" status="release" pubdate="20180504190552" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://github.com/oleg-py/better-monadic-for" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="5">

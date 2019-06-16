@@ -13,13 +13,12 @@ import org.http4s.server.blaze.BlazeServerBuilder
 import org.slf4j.LoggerFactory
 
 import scala.concurrent.{ExecutionContext, ExecutionContextExecutorService}
-import scala.util.Properties
 
 object Chatter extends IOApp {
   private val log = LoggerFactory.getLogger(getClass)
 
   override def run(args: List[String]): IO[ExitCode] = {
-    val port: Int = Properties.envOrElse("port", "8081").toInt
+    val port: Int = Option(System.getProperty("port")).getOrElse("8081").toInt
 
     log.info(s"Port is $port")
 
