@@ -16,8 +16,8 @@ import scala.util.Properties
 
 object Chatter extends IOApp {
   override def run(args: List[String]): IO[ExitCode] = {
-    val port: Int = Properties.envOrElse("PORT", "8080").toInt
-    println(s"!!!!!!!! Port is $port")
+    val port: Int = Properties.envOrElse("port", "8080").toInt
+
     for {
       q   <- Queue.unbounded[IO, FromClient]
       t   <- Topic[IO, ToClient](ToClient(""))
@@ -51,11 +51,13 @@ class ChatterApp[F[_]](contextShift: ContextShift[F],
   val ec: ExecutionContextExecutorService =
     ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(4))
 
-  def stream(port: Int): Stream[F, ExitCode] =
+  def stream(port: Int): Stream[F, ExitCode] = {
+    println(s"!!!!!!!! Port is $port")
     BlazeServerBuilder[F]
       .bindHttp(port, "0.0.0.0")
       .withHttpApp(new ChatterRoutes[F](ec, contextShift, queue, topic, ref).routes.orNotFound)
       .serve
+  }
 }
 
 object ChatterApp {
