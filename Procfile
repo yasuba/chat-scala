@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/chat-scala -Dhttp.port=${PORT}
+web: target/universal/stage/bin/chatter -Dhttp.port=${PORT}
