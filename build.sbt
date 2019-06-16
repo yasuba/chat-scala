@@ -6,7 +6,7 @@ val LogbackVersion = "1.2.3"
 lazy val root = (project in file("."))
   .settings(
     organization := "maya",
-    name := "chatter",
+    name := "chat-scala",
     version := "0.0.1-SNAPSHOT",
     scalaVersion := "2.12.8",
     scalacOptions ++= Seq("-Ypartial-unification"),
@@ -24,10 +24,10 @@ lazy val root = (project in file("."))
     mainClass in (Compile, stage) := Some("Chatter"),
     herokuAppName in Compile := "chat-scala",
     herokuIncludePaths in Compile := Seq(
-      "chatter/target/universal/stage"
+      "chat-scala/target/universal/stage"
     ),
     herokuProcessTypes in Compile := Map(
-      "web" -> "chatter/target/universal/stage/bin/chatter"
+      "web" -> "chat-scala/target/universal/stage/bin/chat-scala"
     )
   )
     .enablePlugins(JavaAppPackaging)

@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/chatter -Dport=${PORT}
+web: target/universal/stage/bin/chat-scala -Dport=${PORT}
