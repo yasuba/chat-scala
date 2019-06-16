@@ -16,28 +16,29 @@ import scala.util.Properties
 
 object Chatter extends IOApp {
   override def run(args: List[String]): IO[ExitCode] = {
-   for {
-     q   <- Queue.unbounded[IO, FromClient]
-     t   <- Topic[IO, ToClient](ToClient(""))
-     ref <- Ref.of[IO, State](State(0))
+    val port: Int = Properties.envOrElse("PORT", "8080").toInt
+    println(s"!!!!!!!! Port is $port")
+    for {
+      q   <- Queue.unbounded[IO, FromClient]
+      t   <- Topic[IO, ToClient](ToClient(""))
+      ref <- Ref.of[IO, State](State(0))
 
-     exitCode   <- {
-       val messageStream = q
-         .dequeue
-         .evalMap{fromClient =>
-           ref.modify(currentState => (
-             State(currentState.messageCount + 1),
-             ToClient( s"(${currentState.messageCount}): ${fromClient.userName}: ${fromClient.message}")
-           ))
-         }
-         .through(t.publish)
+      exitCode   <- {
+        val messageStream = q
+          .dequeue
+          .evalMap{fromClient =>
+            ref.modify(currentState => (
+              State(currentState.messageCount + 1),
+              ToClient( s"(${currentState.messageCount}): ${fromClient.userName}: ${fromClient.message}")
+            ))
+          }
+          .through(t.publish)
 
-       val serverStream = ChatterApp[IO](contextShift, q, t, ref).stream
-       val combinedStream = Stream(messageStream, serverStream).parJoinUnbounded
-         combinedStream.compile.drain.as(ExitCode.Success)
-     }
-   }
-     yield exitCode
+        val serverStream = ChatterApp[IO](contextShift, q, t, ref).stream(port)
+        val combinedStream = Stream(messageStream, serverStream).parJoinUnbounded
+          combinedStream.compile.drain.as(ExitCode.Success)
+      }
+    } yield exitCode
   }
 }
 
@@ -50,9 +51,7 @@ class ChatterApp[F[_]](contextShift: ContextShift[F],
   val ec: ExecutionContextExecutorService =
     ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(4))
 
-  val port: Int = Properties.envOrElse("PORT", "8080").toInt
-
-  def stream: Stream[F, ExitCode] =
+  def stream(port: Int): Stream[F, ExitCode] =
     BlazeServerBuilder[F]
       .bindHttp(port, "0.0.0.0")
       .withHttpApp(new ChatterRoutes[F](ec, contextShift, queue, topic, ref).routes.orNotFound)
