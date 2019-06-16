@@ -21,7 +21,13 @@ lazy val root = (project in file("."))
     ),
     addCompilerPlugin("org.spire-math" %% "kind-projector"     % "0.9.6"),
     addCompilerPlugin("com.olegpy"     %% "better-monadic-for" % "0.2.4"),
-    herokuAppName in Compile := "chat-scala"
+    herokuAppName in Compile := "chat-scala",
+    herokuIncludePaths in Compile := Seq(
+      "chatter/target/universal/stage"
+    ),
+    herokuProcessTypes in Compile := Map(
+      "web" -> "chatter/target/universal/stage/bin/chatter"
+    )
   )
     .enablePlugins(JavaAppPackaging)
 
