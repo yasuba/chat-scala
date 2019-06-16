@@ -21,7 +21,7 @@ lazy val root = (project in file("."))
     ),
     addCompilerPlugin("org.spire-math" %% "kind-projector"     % "0.9.6"),
     addCompilerPlugin("com.olegpy"     %% "better-monadic-for" % "0.2.4"),
-    mainClass in (Compile, stage) := Some("Chatter"),
+    mainClass in (Compile) := Some("Chatter"),
     herokuAppName in Compile := "chat-scala",
     herokuIncludePaths in Compile := Seq(
       "chatter/target/universal/stage"
