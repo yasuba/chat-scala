@@ -4,7 +4,7 @@
 		module="chat-scala_2.12"
 		revision="0.0.1-SNAPSHOT"
 		status="integration"
-		publication="20190616163156"
+		publication="20190616164014"
 	>
 		<description>
 		chat-scala
