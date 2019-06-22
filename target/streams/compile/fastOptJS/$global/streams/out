@@ -1,0 +1,16 @@
+[0m[[0m[0minfo[0m] [0m[0mFast optimizing /Users/mayadriv/LearnScala/chat-scala/target/scala-2.12/chat-scala-fastopt.js[0m
+[0m[[0m[0mdebug[0m] [0m[0mLinker: Compute reachability: 185867 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mLinker: Assemble LinkedClasses: 407060 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mBasic Linking: 605578 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Batch mode: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Incremental part: 130409 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Optimizing 817 methods.[0m
+[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Optimizer part: 530787 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: 672910 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: Compute reachability: 52399 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: Assemble LinkedClasses: 7037 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: 62704 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter: Class tree cache stats: reused: 32 -- invalidated: 39[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter: Method tree cache stats: resued: 0 -- invalidated: 96[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter (write output): 256656 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mGlobal IR cache stats: reused: 0 -- invalidated: 57 -- trees read: 251[0m

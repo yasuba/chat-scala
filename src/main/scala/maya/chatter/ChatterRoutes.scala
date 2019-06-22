@@ -21,35 +21,9 @@ class ChatterRoutes[F[_]](ec: ExecutionContext,
 
   implicit val cs: ContextShift[F] = contextShift
 
-  def routes: HttpRoutes[F] = HttpRoutes.of[F] {
-
-    case request @ GET -> Root  =>
-      StaticFile
-        .fromResource[F]("/static/index.html", ec, Some(request))
-        .getOrElseF(NotFound("Couldn't find this resource file"))
-
-    case request @ GET -> Root / "chat.js"  =>
-      StaticFile
-        .fromResource[F]("/static/chat.js", ec, Some(request))
-        .getOrElseF(NotFound("Couldn't find this resource file"))
-
-    case request @ GET -> Root / "style.css"  =>
-      StaticFile
-        .fromResource[F]("/static/style.css", ec, Some(request))
-        .getOrElseF(NotFound("Couldn't find this resource file"))
-
-    case request @ GET -> Root / "bird.png"  =>
-      StaticFile
-        .fromResource[F]("/static/bird.png", ec, Some(request))
-        .getOrElseF(NotFound("Couldn't find this resource file"))
-
-    case request @ GET -> Root / "background.gif"  =>
-      StaticFile
-        .fromResource[F]("/static/background.gif", ec, Some(request))
-        .getOrElseF(NotFound("Couldn't find this resource file"))
+  def routes: PartialFunction[Request[F], F[Response[F]]] = {
 
     case GET -> Root / "ws" / userName =>
-
       val toClient = topic
         .subscribe(1000)
         .map { toClientMessage => WebSocketFrame.Text(toClientMessage.message)}
@@ -61,6 +35,30 @@ class ChatterRoutes[F[_]](ec: ExecutionContext,
         }.through(queue.enqueue)
       )
 
+    case GET -> Root / "account" / userName =>
+      val outputStream: Stream[F, String] = Stream.eval(chatState.get)
+        .map { state =>
+          val user = state.users.find(u => u.userName == userName).map { user =>
+            user.userName
+          }
+            .getOrElse("User not found")
+
+          val usersMessages = state.messages.filter(msg => msg.userName == user).map(_.message)
+
+          s"""
+            |<html>
+            |<title>${user}'s messages</title>
+            |<body>
+            |<ul>${usersMessages}</ul>
+            |</body>
+            |</html>
+          """.stripMargin
+
+        }
+
+      Ok(outputStream, `Content-Type`(MediaType.text.html))
+
+
     case GET -> Root / "metrics" =>
       val outputStream: Stream[F, String] = Stream
         .eval(chatState.get)
@@ -70,6 +68,7 @@ class ChatterRoutes[F[_]](ec: ExecutionContext,
              |<title>Chat Server State</title>
              |<body>
              |<div>MessageCount: ${state.messageCount}</div>
+             |<div>Users: ${state.users.map(_.userName)}</div>
              |</body>
              |</html>
               """.stripMargin)

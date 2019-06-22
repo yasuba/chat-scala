@@ -1,0 +1,6 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/mayadriv/LearnScala/chat-scala/src/main/scala/maya/chatter/ChatterServer.scala:33:78: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : maya.chatter.State[0m
+[0m[[0m[31merror[0m] [0m[0m required: List[String][0m
+[0m[[0m[31merror[0m] [0m[0m              State(currentState.messageCount + 1, User(fromClient.userName, currentState) :: currentState.users),[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                             ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
